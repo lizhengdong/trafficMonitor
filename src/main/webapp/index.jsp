@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<h2>主页</h2>
 <jsp:forward page="/login"></jsp:forward>
 </body>
 </html>

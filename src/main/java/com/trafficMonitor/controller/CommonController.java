@@ -12,22 +12,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Description: CommonController
  */
 @Controller
+@RequestMapping("/")
 public class CommonController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String indexGet() { return "index"; }
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+        return "register";
+    }
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public String indexPost() {
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String indexGet() {
         return "index";
     }
 
-    @RequestMapping(value="*")
-    public String fourZeroFour(){
+    @RequestMapping(value = "*")
+    public String fourZeroFour() {
         return "404";
     }
 }
