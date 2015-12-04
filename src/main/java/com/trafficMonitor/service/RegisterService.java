@@ -1,6 +1,6 @@
 package com.trafficMonitor.service;
 
-import com.trafficMonitor.model.User;
+import com.trafficMonitor.model.SystemUsers;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("registerService")
 public interface RegisterService {
-    public boolean registerUser(User user);
+    public boolean registerUser(SystemUsers user);
 
     public boolean alreadyExistUserName(String username);
 

@@ -11,9 +11,9 @@
 <head>
     <meta charset="utf_8">
     <title>Android流量监测系统登录</title>
-    <link rel="stylesheet" type="text/css" href="/static/mycss/loginRegister.css">
-    <link rel="stylesheet" type="text/css" href="/static/mycss/loginRegisterBase.css">
-    <link rel="stylesheet" type="text/css" href="/static/mycss/animate-custom.css">
+    <link rel="stylesheet" type="text/css" href="/mycss/loginRegister.css">
+    <link rel="stylesheet" type="text/css" href="/mycss/loginRegisterBase.css">
+    <link rel="stylesheet" type="text/css" href="/mycss/animate-custom.css">
 </head>
 <body>
 <div class="codrops-demos">

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trafficMonitor.dao.TrafficArffDao">
+    <resultMap id="BaseResultMap" type="com.trafficMonitor.model.TrafficArff">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="target_ip" property="targetIp" jdbcType="VARCHAR"/>
+        <result column="link_count" property="linkCount" jdbcType="INTEGER"/>
+        <result column="visit_frequency" property="visitFrequency" jdbcType="INTEGER"/>
+        <result column="up_traffic" property="upTraffic" jdbcType="BIGINT"/>
+        <result column="down_traffic" property="downTraffic" jdbcType="BIGINT"/>
+        <result column="begin_type" property="beginType" jdbcType="VARCHAR"/>
+        <result column="end_type" property="endType" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="RemoteIpAndIntList" type="com.trafficMonitor.model.RemoteIpAndInt">
+        <result column="remote_ip" property="remoteIp" jdbcType="VARCHAR"/>
+        <result column="int_varible" property="intVarible" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, target_ip, link_count, visit_frequency, up_traffic, down_traffic, begin_type, 
+    end_type
+  </sql>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from traffic_arff
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from traffic_arff
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from traffic_arff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.trafficMonitor.model.TrafficArff">
+    insert into traffic_arff (id, target_ip, link_count, 
+      visit_frequency, up_traffic, down_traffic, 
+      begin_type, end_type)
+    values (#{id,jdbcType=INTEGER}, #{targetIp,jdbcType=VARCHAR}, #{linkCount,jdbcType=INTEGER},
+      #{visitFrequency,jdbcType=INTEGER}, #{upTraffic,jdbcType=BIGINT}, #{downTraffic,jdbcType=BIGINT},
+      #{beginType,jdbcType=VARCHAR}, #{endType,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.trafficMonitor.model.TrafficArff">
+        insert into traffic_arff
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="targetIp != null">
+                target_ip,
+            </if>
+            <if test="linkCount != null">
+                link_count,
+            </if>
+            <if test="visitFrequency != null">
+                visit_frequency,
+            </if>
+            <if test="upTraffic != null">
+                up_traffic,
+            </if>
+            <if test="downTraffic != null">
+                down_traffic,
+            </if>
+            <if test="beginType != null">
+                begin_type,
+            </if>
+            <if test="endType != null">
+                end_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="targetIp != null">
+                #{targetIp,jdbcType=VARCHAR},
+            </if>
+            <if test="linkCount != null">
+                #{linkCount,jdbcType=INTEGER},
+            </if>
+            <if test="visitFrequency != null">
+                #{visitFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="upTraffic != null">
+                #{upTraffic,jdbcType=BIGINT},
+            </if>
+            <if test="downTraffic != null">
+                #{downTraffic,jdbcType=BIGINT},
+            </if>
+            <if test="beginType != null">
+                #{beginType,jdbcType=VARCHAR},
+            </if>
+            <if test="endType != null">
+                #{endType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.trafficMonitor.model.TrafficArff">
+        update traffic_arff
+        <set>
+            <if test="targetIp != null">
+                target_ip = #{targetIp,jdbcType=VARCHAR},
+            </if>
+            <if test="linkCount != null">
+                link_count = #{linkCount,jdbcType=INTEGER},
+            </if>
+            <if test="visitFrequency != null">
+                visit_frequency = #{visitFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="upTraffic != null">
+                up_traffic = #{upTraffic,jdbcType=BIGINT},
+            </if>
+            <if test="downTraffic != null">
+                down_traffic = #{downTraffic,jdbcType=BIGINT},
+            </if>
+            <if test="beginType != null">
+                begin_type = #{beginType,jdbcType=VARCHAR},
+            </if>
+            <if test="endType != null">
+                end_type = #{endType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.trafficMonitor.model.TrafficArff">
+    update traffic_arff
+    set target_ip = #{targetIp,jdbcType=VARCHAR},
+      link_count = #{linkCount,jdbcType=INTEGER},
+      visit_frequency = #{visitFrequency,jdbcType=INTEGER},
+      up_traffic = #{upTraffic,jdbcType=BIGINT},
+      down_traffic = #{downTraffic,jdbcType=BIGINT},
+      begin_type = #{beginType,jdbcType=VARCHAR},
+      end_type = #{endType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectRemoteIpAndLinkCount" resultMap="RemoteIpAndIntList">
+      SELECT a.remote_ip,COUNT(b.uri_id) AS int_varible FROM pkg a INNER JOIN pkg_uri b ON a.id=b.package_id GROUP BY a.remote_ip
+    </select>
+    <select id="selectRemoteIpAndVisitFrequency" resultMap="RemoteIpAndIntList">
+    SELECT remote_ip,COUNT(*) AS int_varible FROM pkg GROUP BY remote_ip
+    </select>
+    <select id="selectRemoteIpAndUpTraffic" resultMap="RemoteIpAndIntList">
+    SELECT remote_ip,SUM(flow_amount) AS int_varible FROM pkg WHERE flow_directioin=0 GROUP BY remote_ip
+    </select>
+    <select id="selectRemoteIpAndDownTraffic" resultMap="RemoteIpAndIntList">
+    SELECT remote_ip,SUM(flow_amount) AS int_varible FROM pkg WHERE flow_directioin=1 GROUP BY remote_ip
+    </select>
+
+    <update id="updateVisitFrequencyByRemoteIp" parameterType="com.trafficMonitor.model.RemoteIpAndInt">
+        UPDATE traffic_arff
+        SET visit_frequency=#{intVarible,jdbcType=INTEGER}
+        WHERE target_ip=#{remoteIp,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateUpTrafficByRemoteIp" parameterType="com.trafficMonitor.model.RemoteIpAndInt">
+        UPDATE traffic_arff
+        SET up_traffic=#{intVarible,jdbcType=INTEGER}
+        WHERE target_ip=#{remoteIp,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateDownTrafficByRemoteIp" parameterType="com.trafficMonitor.model.RemoteIpAndInt">
+        UPDATE traffic_arff
+        SET down_traffic=#{intVarible,jdbcType=INTEGER}
+        WHERE target_ip=#{remoteIp,jdbcType=VARCHAR}
+    </update>
+</mapper>

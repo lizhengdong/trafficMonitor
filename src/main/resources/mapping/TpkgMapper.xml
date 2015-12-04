@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.trafficMonitor.dao.TpkgDao" >
+  <resultMap id="BaseResultMap" type="com.trafficMonitor.model.Tpkg" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="native_mac" property="nativeMac" jdbcType="VARCHAR" />
+    <result column="remote_ip" property="remoteIp" jdbcType="VARCHAR" />
+    <result column="remote_port" property="remotePort" jdbcType="INTEGER" />
+    <result column="protocol_type" property="protocolType" jdbcType="VARCHAR" />
+    <result column="flow_direction" property="flowDirection" jdbcType="BIT" />
+    <result column="flow_amount" property="flowAmount" jdbcType="VARCHAR" />
+    <result column="first_visit_time" property="firstVisitTime" jdbcType="TIMESTAMP" />
+    <result column="last_visit_time" property="lastVisitTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, native_mac, remote_ip, remote_port, protocol_type, flow_direction, flow_amount, 
+    first_visit_time, last_visit_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tpkg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpkg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.trafficMonitor.model.Tpkg" >
+    insert into tpkg (id, native_mac, remote_ip, 
+      remote_port, protocol_type, flow_direction, 
+      flow_amount, first_visit_time, last_visit_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{nativeMac,jdbcType=VARCHAR}, #{remoteIp,jdbcType=VARCHAR}, 
+      #{remotePort,jdbcType=INTEGER}, #{protocolType,jdbcType=VARCHAR}, #{flowDirection,jdbcType=BIT}, 
+      #{flowAmount,jdbcType=VARCHAR}, #{firstVisitTime,jdbcType=TIMESTAMP}, #{lastVisitTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trafficMonitor.model.Tpkg" >
+    insert into tpkg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nativeMac != null" >
+        native_mac,
+      </if>
+      <if test="remoteIp != null" >
+        remote_ip,
+      </if>
+      <if test="remotePort != null" >
+        remote_port,
+      </if>
+      <if test="protocolType != null" >
+        protocol_type,
+      </if>
+      <if test="flowDirection != null" >
+        flow_direction,
+      </if>
+      <if test="flowAmount != null" >
+        flow_amount,
+      </if>
+      <if test="firstVisitTime != null" >
+        first_visit_time,
+      </if>
+      <if test="lastVisitTime != null" >
+        last_visit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nativeMac != null" >
+        #{nativeMac,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteIp != null" >
+        #{remoteIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePort != null" >
+        #{remotePort,jdbcType=INTEGER},
+      </if>
+      <if test="protocolType != null" >
+        #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="flowDirection != null" >
+        #{flowDirection,jdbcType=BIT},
+      </if>
+      <if test="flowAmount != null" >
+        #{flowAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="firstVisitTime != null" >
+        #{firstVisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastVisitTime != null" >
+        #{lastVisitTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trafficMonitor.model.Tpkg" >
+    update tpkg
+    <set >
+      <if test="nativeMac != null" >
+        native_mac = #{nativeMac,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteIp != null" >
+        remote_ip = #{remoteIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePort != null" >
+        remote_port = #{remotePort,jdbcType=INTEGER},
+      </if>
+      <if test="protocolType != null" >
+        protocol_type = #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="flowDirection != null" >
+        flow_direction = #{flowDirection,jdbcType=BIT},
+      </if>
+      <if test="flowAmount != null" >
+        flow_amount = #{flowAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="firstVisitTime != null" >
+        first_visit_time = #{firstVisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastVisitTime != null" >
+        last_visit_time = #{lastVisitTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trafficMonitor.model.Tpkg" >
+    update tpkg
+    set native_mac = #{nativeMac,jdbcType=VARCHAR},
+      remote_ip = #{remoteIp,jdbcType=VARCHAR},
+      remote_port = #{remotePort,jdbcType=INTEGER},
+      protocol_type = #{protocolType,jdbcType=VARCHAR},
+      flow_direction = #{flowDirection,jdbcType=BIT},
+      flow_amount = #{flowAmount,jdbcType=VARCHAR},
+      first_visit_time = #{firstVisitTime,jdbcType=TIMESTAMP},
+      last_visit_time = #{lastVisitTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

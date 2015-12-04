@@ -5,9 +5,9 @@ import com.trafficMonitor.service.UserTestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by lizhengdong on 11/26/15.
@@ -21,9 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 public class UserTestController {
     @Resource
     private UserTestService userTestService;
+
     @RequestMapping("/showUser")
-    public String toIndex(HttpServletRequest request, Model model) {
-        int userId = Integer.parseInt(request.getParameter("id"));
+    public String toIndex(@RequestParam(value = "id", required = true) Integer userId, Model model) {
         UserTest userTest = this.userTestService.getUserById(userId);
         model.addAttribute("user", userTest);
         return "showUser";
