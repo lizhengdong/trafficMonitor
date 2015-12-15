@@ -10,31 +10,33 @@
 <html>
 <head>
     <meta charset="utf_8">
-    <title>Android流量监测系统注册</title>
+    <title>安卓流量监测系统注册</title>
     <link rel="stylesheet" type="text/css" href="/mycss/loginRegister.css">
     <link rel="stylesheet" type="text/css" href="/mycss/loginRegisterBase.css">
     <link rel="stylesheet" type="text/css" href="/mycss/animate-custom.css">
+    <script type="text/javascript" src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/myjs/register.js"></script>
 </head>
 <body>
 <div class="codrops-demos">
-    <span>安卓<strong>流量监测</strong>系统注册</span>
+    <span><strong>安卓流量监测系统注册</strong></span>
 </div>
 <div id="container_demo">
     <div id="wrapper">
         <div id="login" class="animate form">
-            <form action="/registerUser" autocomplete="on">
+            <form action="/registerUser" method="post" autocomplete="on">
                 <h1>注册</h1>
 
                 <p>
                     <label for="usernamesignup" class="uname" data-icon="u">用户名</label>
                     <input id="usernamesignup" name="usernamesignup" required="required" type="text"
-                           placeholder="英文用户名，例如：admin"/>
+                           placeholder="英文用户名，例如：admin" onblur="usernamesignupBlur()"/>
                 </p>
 
                 <p>
                     <label for="emailsignup" class="youmail" data-icon="e">邮箱</label>
                     <input id="emailsignup" name="emailsignup" required="required" type="email"
-                           placeholder="邮箱地址"/>
+                           placeholder="邮箱地址" onblur="emailsignupBlur()"/>
                 </p>
 
                 <p>

@@ -11,6 +11,12 @@ public interface SystemUsersDao {
 
     SystemUsers selectByPrimaryKey(Integer id);
 
+    int selectByName(String username);
+
+    int selectByMail(String mailbox);
+
+    String selectPasswordByName(String username);
+
     int updateByPrimaryKeySelective(SystemUsers record);
 
     int updateByPrimaryKey(SystemUsers record);

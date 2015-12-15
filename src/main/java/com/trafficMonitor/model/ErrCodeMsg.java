@@ -1,4 +1,4 @@
-package com.trafficMonitor.controller;
+package com.trafficMonitor.model;
 
 /**
  * Created by lizhengdong on 11/20/15.

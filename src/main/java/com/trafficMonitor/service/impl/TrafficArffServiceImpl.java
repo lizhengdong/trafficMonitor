@@ -191,7 +191,7 @@ public class TrafficArffServiceImpl implements TrafficArffService {
             bufferedOutputStream.write("@attribute trafficType {safe, danger}\n\n".getBytes());
             bufferedOutputStream.write("@data\n".getBytes());
 
-            for (int i = 0; i < resultTrainData.size(); i++) {
+            for (int i = 0; i < 2500; i++) {
                 TrainData temp = resultTrainData.get(i);
                 String line = temp.getLinkNum() + "," + temp.getUpDownTrafficPro() + "," + temp.getVisitFre() + "," + temp.getTrafficTotal() + "," + temp.getTrafficType() + "\r\n";
                 bufferedOutputStream.write(line.getBytes());

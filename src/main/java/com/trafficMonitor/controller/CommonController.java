@@ -24,6 +24,16 @@ public class CommonController {
         return "register";
     }
 
+    @RequestMapping(value = "/registerSuccess", method = RequestMethod.GET)
+    public String registerSuccess() {
+        return "registerSuccess";
+    }
+
+    @RequestMapping(value = "/registerFail", method = RequestMethod.GET)
+    public String registerFail() {
+        return "registerFail";
+    }
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String indexGet() {
         return "index";

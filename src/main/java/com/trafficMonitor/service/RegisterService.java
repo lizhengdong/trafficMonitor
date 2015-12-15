@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
  * Update by lizhengdong on 11/20/15.
  * Description: RegisterService
  */
-@Service("registerService")
 public interface RegisterService {
     public boolean registerUser(SystemUsers user);
 

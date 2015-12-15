@@ -1,6 +1,7 @@
 package com.trafficMonitor.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.trafficMonitor.model.ErrCodeMsg;
 
 /**
  * Created by lizhengdong on 11/20/15.

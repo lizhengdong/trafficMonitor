@@ -10,19 +10,19 @@
 <html>
 <head>
     <meta charset="utf_8">
-    <title>Android流量监测系统登录</title>
+    <title>安卓流量监测系统登录</title>
     <link rel="stylesheet" type="text/css" href="/mycss/loginRegister.css">
     <link rel="stylesheet" type="text/css" href="/mycss/loginRegisterBase.css">
     <link rel="stylesheet" type="text/css" href="/mycss/animate-custom.css">
 </head>
 <body>
 <div class="codrops-demos">
-    <span>安卓<strong>流量监测</strong>系统登录</span>
+    <span><strong>安卓流量监测系统登录</strong></span>
 </div>
 <div id="container_demo">
     <div id="wrapper">
         <div id="login" class="animate form">
-            <form action="/index" autocomplete="on">
+            <form action="/loginUser" method="post" autocomplete="on">
                 <h1>登录</h1>
                 <p>
                     <label for="username" class="uname" data-icon="u">您的邮箱或用户名</label>
