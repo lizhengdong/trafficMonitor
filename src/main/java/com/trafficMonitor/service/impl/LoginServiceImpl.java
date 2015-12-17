@@ -4,6 +4,7 @@ import com.trafficMonitor.dao.SystemUsersDao;
 import com.trafficMonitor.service.LoginService;
 import com.trafficMonitor.utils.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by lizhengdong on 12/13/15.
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Update by lizhengdong on 12/13/15.
  * Description: LoginServiceImpl
  */
+@Service("loginService")
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private SystemUsersDao systemUsersDao;

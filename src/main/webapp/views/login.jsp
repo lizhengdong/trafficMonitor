@@ -38,6 +38,7 @@
 
                 <p class="keeplogin">
                     <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping"/>
+                    <input type="hidden" name="_loginkeeping" />
                     <label for="loginkeeping">保持登录状态</label>
                 </p>
 

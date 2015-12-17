@@ -13,6 +13,6 @@
 </head>
 <body>
 <h2>主页</h2>
-<jsp:forward page="/login"></jsp:forward>
+<jsp:forward page="/home"></jsp:forward>
 </body>
 </html>

@@ -11,6 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <context:component-scan base-package="com.trafficMonitor.controller"/>
+
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -55,4 +56,13 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
+    <!-- 自定义拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--设置拦截的路径-->
+            <mvc:mapping path="/*"/>
+            <bean class="com.trafficMonitor.utils.interceptor.AuthorizedInterceptor">
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

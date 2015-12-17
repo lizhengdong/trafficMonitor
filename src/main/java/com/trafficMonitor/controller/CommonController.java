@@ -34,9 +34,9 @@ public class CommonController {
         return "registerFail";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String indexGet() {
-        return "index";
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String home() {
+        return "home";
     }
 
     @RequestMapping(value = "*")

@@ -183,6 +183,11 @@
             <artifactId>weka-stable</artifactId>
             <version>3.6.13</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${final.name}</finalName>
